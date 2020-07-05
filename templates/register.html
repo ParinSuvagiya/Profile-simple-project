@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Register Page</title>
+{% endblock %}
+
+{% block body %}
+{% load static %}
+   <div class="container text-center position">
+      <div class="container alert alert-dark">
+         
+         <div class="container mt-2 mb-2 float-left pl-2">
+             {% for message in messages %}
+               <h5 class="warning">{{message}}</h5>
+             {% endfor %}
+         </div>
+         
+          <form action="{% url 'register' %}" method="post">
+          {% csrf_token %}
+             <label class="form-lable mt-2">Username</label>
+             <input class="form-control" name="username" type="text" required>
+             
+             <label class="form-lable mt-2">Email</label>
+             <input class="form-control" name="email" type="email" required>
+             
+             <label class="form-lable mt-2">Password</label>
+             <input class="form-control" name="password" type="password" required>
+             
+             <label class="form-lable mt-2">Confirm Password</label>
+             <input class="form-control" name="cpassword" type="password" required>
+             
+             <input type="submit" class="btn btn-primary mt-2">
+          </form>
+      </div>
+   </div>
+{% endblock %}

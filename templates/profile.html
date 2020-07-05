@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Profile Page</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <div class="container alert alert-dark">
+   <div class="conatiner text-center alert alert-dark">
+      <h1>Profile/Edit</h1>
+   </div>
+    <div>
+      {% for message in messages %}
+      <h5 class="warning">{{message}}</h5>
+      {% endfor %}
+    </div>
+   <form action="profile" method="post" enctype="multipart/form-data">
+   {% csrf_token %}
+      <label class="form-lable mt-2">Username:</label>
+      <input name="username" type="text" class="form-control mt-2" value="{{data.username}}" required>
+      
+      <label class="form-lable mt-2">Email:</label>
+      <input name="email" type="email" class="form-control mt-2 mb-2" value="{{data.email}}" required>
+      
+      
+     {{form.as_p}}
+     <input type="submit" value="Update" class="btn btn-primary">
+     <a href="home" class="btn btn-primary float-right">Back</a>
+  </form>
+  </div>
+</div>
+
+{% endblock %}
